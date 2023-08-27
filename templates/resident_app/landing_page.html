@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block body_block %}
+
+<div class="container">
+    <div class="row my-3">
+        <div class="col"></div>
+      <div class="col">
+        <button class="btn btn-warning btn-block" onclick="window.location.href='{% url 'resident_app:resident_list' %}'">Residents</button>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="row my-3">
+        <div class="col"></div>
+      <div class="col">
+        <button class="btn btn-warning btn-block" onclick="window.location.href='{% url 'resident_app:comm_list' %}'">Community Events</button>
+      </div>
+      <div class="col"></div>
+    </div>
+  </div>
+
+
+{% endblock %}

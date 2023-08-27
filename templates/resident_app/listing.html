@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title %}Residents{% endblock %}
+
+{% block body_block %}
+
+
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <a href="{% url 'resident_app:resident_create' %}" class="btn btn-warning my-3">Create Resident</a>
+    </div>
+</div>
+
+
+<div class="row mx-2">
+
+    <div class="col-md-2 my-2"></div>
+    <div class="col-md-8 my-2">
+        <div class="container mt-4">
+            <h1>Residents List</h1>
+            <ul class="list-group mt-4">
+                {% for record in page_obj %}
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-auto mt-4 mx-auto">
+                            <strong>Name:</strong> {{ record.resident_name }}
+                        </div>
+                        <div class="col-auto mt-4 mx-auto">
+                            <strong>Email:</strong> {{ record.email_id }}
+                        </div>
+                        <div class="col-auto mt-4 mx-auto">
+                            <strong>Place:</strong> {{ record.resident_building_name }}
+                        </div>
+                        <div class="col-auto mx-auto">
+                            <!-- Column 3: Edit button -->
+                            <a href="{% url 'resident_app:resident_detail' pk=record.id %}" class="btn btn-warning my-3">Details</a>
+                        </div>
+                    </div>
+                </li>
+                
+                {% endfor %}
+            </ul>
+        </div>
+
+
+    </div>
+
+    <div class="col-md-2 my-2">
+        <ul>
+            <li>Click on Detail for full details</li>
+            <li>Click on Create for adding new resident</li>
+          </ul>
+    </div>
+</div>
+
+<nav aria-label="Page navigation" class="mt-4">
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page=1">&laquo; First</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        </li>
+        {% endif %}
+
+        <li class="page-item active"><a class="page-link" href="#">{{ page_obj.number }}</a></li>
+
+        {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}{{ record.resident_name }}{% endblock %}
+
+{% block body_block %}
+
+
+<div class="container mt-4">
+
+    <div class="row mx-2">
+        <div class="col-md-12 my-2">
+            <h1><strong>Event:</strong> {{ record.event_name }}</h1>
+            <p><strong>Date:</strong> {{record.event_date}}</p>
+            <p><strong>Description:</strong> {{record.event_description}}</p>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+        <div class="col-auto">
+            <a href="{% url 'resident_app:comm_update' pk=record.id %}" class="btn btn-warning">Edit</a>
+        </div>
+        <form method="post" action="{% url 'resident_app:comm_del' pk=record.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

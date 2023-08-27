@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Register{% endblock %}
+
+{% block body_block %}
+<div class="container h-100">
+    <div class="row align-items-center h-100">
+        <div class="col-12 text-center">
+            <h1 class="header-bar">Register</h1>
+            <form id="form_dj" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input style="margin-top:10px;" class="button" type="submit" value="Register">
+            </form>
+            <p style="margin-left: 20px;">Already have an account? <a href="{% url 'accounts_app:login' %}">Login</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

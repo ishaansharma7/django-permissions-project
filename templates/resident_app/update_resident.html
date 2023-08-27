@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Update Resident{% endblock %}
+
+{% block body_block %}
+
+
+<div class="container mt-4">
+    <h1>Update Resident</h1>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary mt-3">Save</button>
+    </form>
+</div>
+
+{% endblock %}
